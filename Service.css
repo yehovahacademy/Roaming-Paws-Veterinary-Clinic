@@ -1,0 +1,250 @@
+/* ============================================
+   ROAMING PAWS — Corporate Modern Style
+   Aesthetic: Trustworthy, Clean, High-End Medical
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700&family=Montserrat:wght@700&display=swap');
+
+:root {
+  /* Corporate Palette */
+  --primary-navy: #0F172A;
+  --medical-blue: #2563EB;
+  --slate-600: #475569;
+  --slate-100: #F1F5F9;
+  --white: #FFFFFF;
+  
+  /* System Values */
+  --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+/* ─── RESET & BASE ─── */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Public Sans', sans-serif;
+  background-color: #FDFDFD;
+  color: var(--primary-navy);
+  line-height: 1.6;
+}
+
+/* Remove HTML <br> tags to control layout via CSS spacing */
+br { display: none; }
+
+/* ─── NAVBAR ─── */
+.Navbar {
+  background: var(--blue-50);
+  border-bottom: 1px solid var(--slate-100);
+  padding: 1rem 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-subtle);
+}
+
+.Navbar h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  color: var(--primary-navy);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Navbar h2 i {
+  color: var(--medical-blue);
+}
+
+.Navbar ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+}
+
+.Navbar a {
+  text-decoration: none;
+  color: var(--slate-600);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.Navbar a:hover {
+  color: var(--medical-blue);
+}
+
+#logout {
+  background: var(--primary-navy);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#logout:hover {
+  background: var(--medical-blue);
+  transform: translateY(-1px);
+}
+
+/* ─── HERO SECTION ─── */
+.paragraph-services {
+  padding: 80px 10%;
+  background: linear-gradient(to right, #f8fafc, #ffffff);
+  text-align: center;
+  border-bottom: 1px solid var(--slate-100);
+}
+
+.paragraph-services h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-navy);
+}
+
+.paragraph-services h1 i {
+  color: var(--medical-blue);
+  margin-right: 15px;
+}
+
+.paragraph-services p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--slate-600);
+}
+
+/* ─── SERVICES GRID ─── */
+/* Targeting the service divs */
+body > div:not(.Navbar):not(.paragraph-services):not(.footer) {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 80px 1fr; /* Icon on left, text on right */
+  align-items: start;
+  gap: 20px;
+}
+
+/* Styling the service items as corporate cards */
+div:has(h2) {
+  background: var(--white);
+  padding: 2rem !important;
+  border-radius: var(--radius);
+  border: 1px solid var(--slate-100);
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition);
+}
+
+div:has(h2):hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--medical-blue);
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--primary-navy);
+}
+
+h2 i {
+  color: var(--medical-blue);
+  font-size: 1.5rem;
+  width: 40px;
+  text-align: center;
+}
+
+p {
+  color: var(--slate-600);
+  margin-bottom: 0;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--primary-navy);
+  color: var(--white);
+  padding: 60px 10% 20px;
+  margin-top: 80px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer h3 {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-info p {
+  color: #cbd5e1;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  background: var(--medical-blue);
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.footer-bottom a {
+  color: #cbd5e1;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .Navbar { flex-direction: column; gap: 15px; text-align: center; }
+  .Navbar ul { gap: 1rem; padding: 0; }
+  .paragraph-services { padding: 40px 5%; }
+}

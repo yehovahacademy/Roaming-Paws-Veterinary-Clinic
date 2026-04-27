@@ -1,0 +1,576 @@
+/* ============================================
+   ROAMING PAWS VETERINARY CLINIC — Style.css
+   Aesthetic: Warm Luxury / Organic Editorial
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap');
+
+/* ─── CSS Variables ─── */
+:root {
+  --cream:       #FAF6EF;
+  --warm-white:  #FDF9F4;
+  --sand:        #E8DDD0;
+  --taupe:       #C4AD96;
+  --brown:       #7A5C44;
+  --espresso:    #3D2B1F;
+  --sage:        #8DA98A;
+  --sage-light:  #C8DBC6;
+  --gold:        #C5973A;
+  --gold-light:  #E8C87A;
+  --text-main:   #2C1F14;
+  --text-muted:  #7A6A5A;
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-lg:   32px;
+  --shadow-soft: 0 8px 40px rgba(61, 43, 31, 0.10);
+  --shadow-card: 0 4px 24px rgba(61, 43, 31, 0.08);
+  --transition:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--cream);
+  color: var(--text-main);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── Grain Texture Overlay ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+/* ─── Typography ─── */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.25;
+  color: var(--espresso);
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; }
+h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 600; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+h4 { font-family: 'DM Sans', sans-serif; font-weight: 500; color: var(--brown); }
+
+p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  max-width: 70ch;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── Navbar ─── */
+.Navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.1rem 5%;
+  background: rgba(250, 246, 239, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(196, 173, 150, 0.3);
+  box-shadow: 0 2px 20px rgba(61, 43, 31, 0.06);
+}
+
+.Navbar h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--espresso);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.Navbar h2 i { color: var(--gold); font-size: 1.2rem; }
+
+.Navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+.Navbar ul li a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: var(--transition);
+  letter-spacing: 0.03em;
+}
+
+.Navbar ul li a:hover {
+  background: var(--sand);
+  color: var(--espresso);
+}
+
+#user-info {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+#logout {
+  background: var(--espresso);
+  color: var(--cream);
+  border: none;
+  padding: 0.55rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.02em;
+}
+
+#logout:hover {
+  background: var(--brown);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(61, 43, 31, 0.2);
+}
+
+/* ─── Hero / Paragraph ─── */
+.paragraph {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8rem 8% 6rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(141, 169, 138, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 70% at 10% 80%, rgba(197, 151, 58, 0.10) 0%, transparent 55%),
+    var(--warm-white);
+}
+
+/* Decorative circle */
+.paragraph::after {
+  content: '';
+  position: absolute;
+  right: -120px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(141, 169, 138, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.paragraph h1 {
+  max-width: 14ch;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.paragraph h1 i {
+  color: var(--gold);
+  font-size: 0.85em;
+  vertical-align: middle;
+}
+
+.paragraph p {
+  font-size: 1.15rem;
+  max-width: 55ch;
+  line-height: 1.85;
+  margin-bottom: 2.5rem;
+}
+
+/* Hero CTA bar */
+.paragraph::before {
+  content: '● Compassionate Care ● Experienced Team ● Always Here for You';
+  position: absolute;
+  bottom: 2.5rem;
+  left: 8%;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  color: var(--taupe);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* ─── Testimonials ─── */
+.Testimonials {
+  padding: 7rem 8%;
+  background: var(--espresso);
+  position: relative;
+  overflow: hidden;
+}
+
+.Testimonials::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(197, 151, 58, 0.08), transparent);
+  pointer-events: none;
+}
+
+.Testimonials h2 {
+  color: var(--cream);
+  text-align: center;
+  margin-bottom: 4rem;
+  font-style: italic;
+}
+
+.Testimonials h2 i { color: var(--gold); margin-right: 0.4rem; }
+
+/* Masonry-style grid */
+.Testimonials > div[class^="testimonial"] {
+  background: rgba(250, 246, 239, 0.06);
+  border: 1px solid rgba(196, 173, 150, 0.18);
+  border-radius: var(--radius-md);
+  padding: 2rem 2.2rem;
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+
+.Testimonials > div[class^="testimonial"]::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  left: 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  color: var(--gold);
+  opacity: 0.5;
+  line-height: 1;
+}
+
+.Testimonials > div[class^="testimonial"]:hover {
+  background: rgba(250, 246, 239, 0.10);
+  border-color: rgba(197, 151, 58, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+.Testimonials p {
+  color: rgba(250, 246, 239, 0.85);
+  font-size: 1rem;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  max-width: none;
+  line-height: 1.7;
+  padding-top: 1rem;
+}
+
+.Testimonials h4 {
+  color: var(--gold-light);
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Two-column grid for testimonials */
+@media (min-width: 768px) {
+  .Testimonials > div[class^="testimonial"] {
+    display: inline-block;
+    width: calc(50% - 0.75rem);
+    vertical-align: top;
+    margin-right: 1.5rem;
+  }
+  .Testimonials > div[class^="testimonial"]:nth-child(even) {
+    margin-right: 0;
+  }
+  .testimonial1, .testimonial3, .testimonial5 { margin-top: 0; }
+  .testimonial2, .testimonial4, .testimonial6 { margin-top: 2.5rem; }
+}
+
+/* ─── Vision Section ─── */
+.paragraph2 {
+  padding: 7rem 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  background: var(--warm-white);
+  position: relative;
+}
+
+.paragraph2::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--sage), var(--gold));
+}
+
+.paragraph2 h2 {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.paragraph2 h2 + i {
+  font-size: 4rem;
+  color: var(--sage);
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paragraph2 p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  max-width: none;
+}
+
+@media (max-width: 767px) {
+  .paragraph2 {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ─── Doctors Section ─── */
+.doctor {
+  padding: 7rem 8%;
+  background: var(--cream);
+}
+
+.doctor h2 {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.doctor h2 i { color: var(--brown); }
+
+/* Card grid */
+.doctor1, .doctor2, .doctor3 {
+  display: inline-block;
+  width: calc(33.33% - 1.4rem);
+  vertical-align: top;
+  margin-right: 2rem;
+  background: var(--warm-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  border: 1px solid var(--sand);
+}
+
+.doctor3 { margin-right: 0; }
+
+.doctor1:hover, .doctor2:hover, .doctor3:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--taupe);
+}
+
+.doctor1 img, .doctor2 img, .doctor3 img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  background: var(--sage-light); /* fallback if image missing */
+  transition: var(--transition);
+}
+
+.doctor1:hover img, .doctor2:hover img, .doctor3:hover img {
+  transform: scale(1.03);
+}
+
+.doctor1 h3, .doctor2 h3, .doctor3 h3 {
+  padding: 1.5rem 1.8rem 0.5rem;
+  font-size: 1.2rem;
+  color: var(--espresso);
+}
+
+.doctor1 p, .doctor2 p, .doctor3 p {
+  padding: 0 1.8rem 1.8rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: none;
+}
+
+/* Accent bar on top of each card */
+.doctor1::before, .doctor2::before, .doctor3::before {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(to right, var(--sage), var(--gold));
+  transition: var(--transition);
+}
+
+.doctor1:hover::before { background: linear-gradient(to right, var(--gold), var(--sage)); }
+
+@media (max-width: 900px) {
+  .doctor1, .doctor2, .doctor3 {
+    width: 100%;
+    display: block;
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+/* ─── Footer ─── */
+.footer {
+  background: var(--espresso);
+  color: var(--cream);
+  padding: 4rem 8% 2rem;
+  border-top: 1px solid rgba(196, 173, 150, 0.15);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.contact h3, .social h3 {
+  color: var(--gold-light);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact h3 i { font-size: 0.9rem; }
+
+.contact-info p {
+  color: rgba(250, 246, 239, 0.7);
+  font-size: 0.92rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  max-width: none;
+  font-weight: 300;
+}
+
+.contact-info i {
+  color: var(--gold);
+  width: 16px;
+  font-size: 0.85rem;
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social-link {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  border: 1px solid rgba(196, 173, 150, 0.25);
+  color: var(--cream);
+  opacity: 0.8;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  opacity: 1;
+  border-color: var(--gold);
+  box-shadow: 0 6px 20px rgba(197, 151, 58, 0.25);
+}
+
+.social-link.facebook:hover { background: #1877F2; border-color: #1877F2; }
+.social-link.twitter:hover  { background: #1DA1F2; border-color: #1DA1F2; }
+.social-link.instagram:hover { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-color: transparent; }
+.social-link.linkedin:hover { background: #0077B5; border-color: #0077B5; }
+
+/* Footer bottom */
+.footer-bottom {
+  border-top: 1px solid rgba(196, 173, 150, 0.15);
+  padding-top: 1.8rem;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 0.82rem;
+  color: rgba(250, 246, 239, 0.45);
+  max-width: none;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.footer-bottom a {
+  color: var(--taupe);
+  transition: color 0.2s;
+}
+
+.footer-bottom a:hover { color: var(--gold-light); }
+
+/* ─── Animations (supplement GSAP) ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.paragraph h1 { animation: fadeUp 0.9s ease both; }
+.paragraph p  { animation: fadeUp 0.9s 0.2s ease both; }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--taupe); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brown); }
+
+/* ─── Selection ─── */
+::selection { background: var(--gold-light); color: var(--espresso); }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .Navbar {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem 4%;
+  }
+  .Navbar ul {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .paragraph { padding: 5rem 6% 4rem; min-height: auto; }
+  .paragraph::before { display: none; }
+  .Testimonials, .paragraph2, .doctor { padding: 5rem 6%; }
+  .footer-content { flex-direction: column; gap: 2rem; }
+}
